@@ -1,0 +1,861 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+/* ============================================
+   GLOBAL NAVBAR FIX - ALL PAGES
+   Works on: /, /pricing, /features, /faq, /support
+   ============================================ */
+
+/* === ALL MOBILE DEVICES (max-width: 768px) === */
+@media only screen and (max-width: 768px) {
+  /* === NAVBAR CONTAINER === */
+  nav {
+    padding: 0.6rem 0.8rem !important;
+    min-height: 54px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.3rem !important;
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 100 !important;
+  }
+
+  /* === LOGO SECTION === */
+  nav > div:first-child {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    max-width: 130px !important;
+    overflow: visible !important;
+  }
+
+  /* === LOGO TEXT - FORCE SINGLE LINE === */
+  nav h1 {
+    font-size: 0.9rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 120px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.1rem !important;
+    flex-wrap: nowrap !important;
+    line-height: 1.2 !important;
+  }
+
+  nav h1 span:first-child {
+    font-size: 0.85rem !important;
+    white-space: nowrap !important;
+    display: inline !important;
+  }
+
+  nav h1 .bg-gradient-to-r {
+    font-size: 0.85rem !important;
+    white-space: nowrap !important;
+    display: inline !important;
+  }
+
+  /* Hide subtitle on all pages */
+  nav p {
+    display: none !important;
+  }
+
+  /* === DESKTOP MENU - HIDE === */
+  .hidden.md\\:flex {
+    display: none !important;
+  }
+
+  /* === HAMBURGER MENU - SHOW === */
+  .md\\:hidden {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.3rem !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    z-index: 101 !important;
+  }
+
+  .md\\:hidden svg {
+    width: 22px !important;
+    height: 22px !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+    color: white !important;
+  }
+
+  /* === RIGHT SIDE BUTTONS === */
+  nav > div:last-child {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+  }
+
+  /* Go Premium button */
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.3rem 0.6rem !important;
+    font-size: 0.55rem !important;
+    border-radius: 0.4rem !important;
+    white-space: nowrap !important;
+    font-weight: 600 !important;
+    min-height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: 0.3s !important;
+    flex-shrink: 0 !important;
+  }
+
+  .bg-gradient-to-r.from-yellow-500.to-orange-500:hover {
+    transform: scale(1.05) !important;
+  }
+
+  /* === MOBILE DROPDOWN MENU === */
+  .absolute.top-full {
+    position: absolute !important;
+    top: calc(100% + 0.3rem) !important;
+    right: 0.5rem !important;
+    left: 0.5rem !important;
+    width: auto !important;
+    margin-top: 0 !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 1rem !important;
+    padding: 0.8rem !important;
+    z-index: 200 !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  .absolute.top-full .flex.flex-col {
+    gap: 0.5rem !important;
+  }
+
+  .absolute.top-full button,
+  .absolute.top-full a {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0 !important;
+    text-align: left !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    display: block !important;
+    width: 100% !important;
+    background: transparent !important;
+    cursor: pointer !important;
+  }
+
+  .absolute.top-full button:last-child,
+  .absolute.top-full a:last-child {
+    border-bottom: none !important;
+  }
+
+  .absolute.top-full button:hover,
+  .absolute.top-full a:hover {
+    color: #60a5fa !important;
+  }
+}
+
+/* === IPHONE SE & SAMSUNG GALAXY S8+ (max-width: 380px) === */
+@media only screen and (max-width: 380px) {
+  /* === NAVBAR === */
+  nav {
+    padding: 0.4rem 0.5rem !important;
+    min-height: 44px !important;
+    gap: 0.2rem !important;
+  }
+
+  /* === LOGO - SMALLER === */
+  nav > div:first-child {
+    max-width: 85px !important;
+    min-width: 60px !important;
+  }
+
+  nav h1 {
+    font-size: 0.65rem !important;
+    max-width: 80px !important;
+  }
+
+  nav h1 span:first-child {
+    font-size: 0.6rem !important;
+  }
+
+  nav h1 .bg-gradient-to-r {
+    font-size: 0.6rem !important;
+  }
+
+  /* === HAMBURGER - SMALLER === */
+  .md\\:hidden {
+    min-width: 30px !important;
+    min-height: 30px !important;
+    padding: 0.2rem !important;
+  }
+
+  .md\\:hidden svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* === PREMIUM BUTTON - SMALLER === */
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.15rem 0.4rem !important;
+    font-size: 0.4rem !important;
+    border-radius: 0.25rem !important;
+    min-height: 22px !important;
+    min-width: 35px !important;
+  }
+
+  /* === DROPDOWN - SMALLER === */
+  .absolute.top-full {
+    right: 0.3rem !important;
+    left: 0.3rem !important;
+    padding: 0.6rem !important;
+  }
+
+  .absolute.top-full button,
+  .absolute.top-full a {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0 !important;
+  }
+}
+
+/* === IPHONE 12/13/14 (381px - 400px) === */
+@media only screen and (min-width: 381px) and (max-width: 400px) {
+  nav > div:first-child {
+    max-width: 110px !important;
+  }
+
+  nav h1 {
+    font-size: 0.8rem !important;
+    max-width: 105px !important;
+  }
+
+  nav h1 span:first-child {
+    font-size: 0.75rem !important;
+  }
+
+  nav h1 .bg-gradient-to-r {
+    font-size: 0.75rem !important;
+  }
+
+  .md\\:hidden svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.2rem 0.5rem !important;
+    font-size: 0.5rem !important;
+    min-height: 26px !important;
+    min-width: 45px !important;
+  }
+}
+
+/* === SAMSUNG GALAXY S8+ (355px - 370px) === */
+@media only screen and (min-width: 355px) and (max-width: 370px) {
+  nav > div:first-child {
+    max-width: 75px !important;
+  }
+
+  nav h1 {
+    font-size: 0.55rem !important;
+    max-width: 70px !important;
+  }
+
+  nav h1 span:first-child {
+    font-size: 0.5rem !important;
+  }
+
+  nav h1 .bg-gradient-to-r {
+    font-size: 0.5rem !important;
+  }
+
+  .md\\:hidden svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.12rem 0.3rem !important;
+    font-size: 0.35rem !important;
+    min-height: 18px !important;
+    min-width: 30px !important;
+  }
+}
+
+/* === EXTRA SMALL (≤ 354px) === */
+@media only screen and (max-width: 354px) {
+  nav > div:first-child {
+    max-width: 65px !important;
+    min-width: 50px !important;
+  }
+
+  nav h1 {
+    font-size: 0.5rem !important;
+    max-width: 60px !important;
+  }
+
+  nav h1 span:first-child {
+    font-size: 0.45rem !important;
+  }
+
+  nav h1 .bg-gradient-to-r {
+    font-size: 0.45rem !important;
+  }
+
+  .md\\:hidden {
+    min-width: 26px !important;
+    min-height: 26px !important;
+  }
+
+  .md\\:hidden svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.1rem 0.25rem !important;
+    font-size: 0.3rem !important;
+    min-height: 16px !important;
+    min-width: 25px !important;
+    border-radius: 0.2rem !important;
+  }
+
+  .absolute.top-full {
+    padding: 0.4rem !important;
+  }
+
+  .absolute.top-full button,
+  .absolute.top-full a {
+    font-size: 0.7rem !important;
+    padding: 0.3rem 0 !important;
+  }
+}
+
+/* === LANDSCAPE MODE === */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+  nav {
+    padding: 0.3rem 0.8rem !important;
+    min-height: 40px !important;
+  }
+
+  nav > div:first-child {
+    max-width: 100px !important;
+  }
+
+  nav h1 {
+    font-size: 0.75rem !important;
+    max-width: 95px !important;
+  }
+
+  .md\\:hidden {
+    min-width: 28px !important;
+    min-height: 28px !important;
+  }
+
+  .md\\:hidden svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.15rem 0.4rem !important;
+    font-size: 0.4rem !important;
+    min-height: 20px !important;
+    min-width: 30px !important;
+  }
+
+  .absolute.top-full {
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* ============================================
+   GLOBAL NAVBAR FIX - ALL PAGES
+   Applies to: Home, Pricing, Features, FAQ, Support, ALL pages
+   Mobile ONLY (≤ 480px) - Does NOT affect tablets/laptops
+   ============================================ */
+
+@media only screen and (max-width: 480px) {
+  /* === NAVBAR CONTAINER === */
+  nav {
+    padding: 0.5rem 0.8rem !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.3rem !important;
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 100 !important;
+  }
+
+  /* === LOGO - FULL NAME WITH REDUCED SIZE === */
+  nav > div:first-child {
+    flex: 0 1 auto !important;
+    max-width: 140px !important;
+    min-width: 80px !important;
+    overflow: visible !important;
+  }
+
+  nav h1 {
+    font-size: 0.75rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 130px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.1rem !important;
+    flex-wrap: nowrap !important;
+    line-height: 1.2 !important;
+  }
+
+  nav h1 span:first-child {
+    font-size: 0.7rem !important;
+    white-space: nowrap !important;
+    display: inline !important;
+  }
+
+  nav h1 .bg-gradient-to-r {
+    font-size: 0.7rem !important;
+    white-space: nowrap !important;
+    display: inline !important;
+  }
+
+  /* === HIDE SUBTITLE === */
+  nav p {
+    display: none !important;
+  }
+
+  /* === HIDE DESKTOP MENU === */
+  .hidden.md\\:flex {
+    display: none !important;
+  }
+
+  /* === SHOW HAMBURGER === */
+  .md\\:hidden {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.3rem !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    z-index: 101 !important;
+  }
+
+  .md\\:hidden svg {
+    width: 20px !important;
+    height: 20px !important;
+    color: white !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* === RIGHT BUTTONS === */
+  nav > div:last-child {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+  }
+
+  /* === PREMIUM BUTTON - ONLY ON HOME PAGE === */
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.25rem 0.6rem !important;
+    font-size: 0.5rem !important;
+    border-radius: 0.35rem !important;
+    min-height: 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    font-weight: 600 !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: 0.3s !important;
+    flex-shrink: 0 !important;
+  }
+
+  .bg-gradient-to-r.from-yellow-500.to-orange-500:hover {
+    transform: scale(1.05) !important;
+  }
+
+  /* === MOBILE DROPDOWN MENU === */
+  .absolute.top-full {
+    position: absolute !important;
+    top: calc(100% + 0.3rem) !important;
+    right: 0.5rem !important;
+    left: 0.5rem !important;
+    width: auto !important;
+    margin-top: 0 !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 1rem !important;
+    padding: 0.8rem !important;
+    z-index: 200 !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  .absolute.top-full .flex.flex-col {
+    gap: 0.5rem !important;
+  }
+
+  .absolute.top-full button,
+  .absolute.top-full a {
+    font-size: 0.85rem !important;
+    padding: 0.5rem 0 !important;
+    text-align: left !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    display: block !important;
+    width: 100% !important;
+    background: transparent !important;
+    cursor: pointer !important;
+  }
+
+  .absolute.top-full button:last-child,
+  .absolute.top-full a:last-child {
+    border-bottom: none !important;
+  }
+
+  .absolute.top-full button:hover,
+  .absolute.top-full a:hover {
+    color: #60a5fa !important;
+  }
+}
+
+/* === IPHONE SE, SAMSUNG GALAXY S8+ (max-width: 375px) === */
+@media only screen and (max-width: 375px) {
+  nav {
+    padding: 0.4rem 0.5rem !important;
+    min-height: 42px !important;
+    gap: 0.2rem !important;
+  }
+
+  nav > div:first-child {
+    max-width: 100px !important;
+    min-width: 60px !important;
+  }
+
+  nav h1 {
+    font-size: 0.6rem !important;
+    max-width: 95px !important;
+  }
+
+  nav h1 span:first-child {
+    font-size: 0.55rem !important;
+  }
+
+  nav h1 .bg-gradient-to-r {
+    font-size: 0.55rem !important;
+  }
+
+  .md\\:hidden {
+    min-width: 30px !important;
+    min-height: 30px !important;
+    padding: 0.2rem !important;
+  }
+
+  .md\\:hidden svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.15rem 0.4rem !important;
+    font-size: 0.4rem !important;
+    min-height: 22px !important;
+    min-width: 30px !important;
+  }
+
+  .absolute.top-full {
+    right: 0.3rem !important;
+    left: 0.3rem !important;
+    padding: 0.6rem !important;
+  }
+
+  .absolute.top-full button,
+  .absolute.top-full a {
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0 !important;
+  }
+}
+
+/* === EXTRA SMALL (≤ 350px) === */
+@media only screen and (max-width: 350px) {
+  nav > div:first-child {
+    max-width: 80px !important;
+    min-width: 50px !important;
+  }
+
+  nav h1 {
+    font-size: 0.5rem !important;
+    max-width: 75px !important;
+  }
+
+  nav h1 span:first-child {
+    font-size: 0.45rem !important;
+  }
+
+  nav h1 .bg-gradient-to-r {
+    font-size: 0.45rem !important;
+  }
+
+  .md\\:hidden {
+    min-width: 26px !important;
+    min-height: 26px !important;
+  }
+
+  .md\\:hidden svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.1rem 0.3rem !important;
+    font-size: 0.35rem !important;
+    min-height: 18px !important;
+    min-width: 25px !important;
+  }
+}
+
+/* === LANDSCAPE MOBILE === */
+@media only screen and (max-width: 480px) and (orientation: landscape) {
+  nav {
+    padding: 0.3rem 0.8rem !important;
+    min-height: 38px !important;
+  }
+
+  nav > div:first-child {
+    max-width: 120px !important;
+  }
+
+  nav h1 {
+    font-size: 0.65rem !important;
+    max-width: 110px !important;
+  }
+
+  .md\\:hidden {
+    min-width: 28px !important;
+    min-height: 28px !important;
+  }
+
+  .md\\:hidden svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .bg-gradient-to-r.from-yellow-500.to-orange-500 {
+    padding: 0.15rem 0.4rem !important;
+    font-size: 0.4rem !important;
+    min-height: 20px !important;
+  }
+
+  .absolute.top-full {
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+  }
+}

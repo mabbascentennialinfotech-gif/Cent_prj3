@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: black;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  color: white;
+}
+
+#root {
+  min-height: 100vh;
+}
+.floating-trial-btn {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: #2563eb;
+  color: white;
+
+  padding: 14px 16px;
+  border: none;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+  z-index: 1000;
+}
+.icon {
+  width: 22px;
+  height: 22px;
+}

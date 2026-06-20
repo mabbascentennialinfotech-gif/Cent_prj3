@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: black;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  color: white;
+}
+
+#root {
+  min-height: 100vh;
+}
+.floating-trial-btn {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: #2563eb;
+  color: white;
+
+  padding: 14px 16px;
+  border: none;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  z-index: 1000;
+}
+.icon {
+  width: 22px;
+  height: 22px;
+}
+/* ====================================
+   RESPONSIVE IMPROVEMENTS
+==================================== */
+
+/* Prevent horizontal scrolling */
+html,
+body,
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+}
+
+/* ====================================
+   MOBILE (0px - 640px)
+==================================== */
+
+@media (max-width: 640px) {
+  /* General spacing */
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Navbar */
+  nav {
+    padding: 1rem !important;
+    gap: 1rem;
+  }
+
+  nav h1 {
+    font-size: 1.4rem !important;
+  }
+
+  nav p {
+    display: none;
+  }
+
+  /* Hero section */
+  h1 {
+    word-break: break-word;
+  }
+
+  /* Hero buttons */
+  .hero-buttons,
+  .button-group {
+    flex-direction: column !important;
+    width: 100%;
+  }
+
+  .hero-buttons button,
+  .button-group button {
+    width: 100%;
+  }
+
+  /* Stats section */
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Cards */
+  .feature-card,
+  .pricing-card,
+  .faq-card {
+    padding: 1rem !important;
+  }
+
+  /* Floating trial button */
+  .floating-trial-btn {
+    right: 10px;
+    bottom: 20px;
+    top: auto;
+    transform: none;
+
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ====================================
+   TABLET (641px - 1024px)
+==================================== */
+
+@media (max-width: 1024px) {
+  nav {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
+  section {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
+  .floating-trial-btn {
+    right: 15px;
+  }
+}
+
+/* ====================================
+   LARGE SCREENS
+==================================== */
+
+@media (min-width: 1600px) {
+  body {
+    font-size: 18px;
+  }
+
+  section {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
+/* ====================================
+   CUSTOM SCROLLBAR
+==================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* ====================================
+   BETTER TOUCH EXPERIENCE
+==================================== */
+
+@media (hover: none) {
+  button:hover {
+    transform: none !important;
+  }
+}
+
+/* ====================================
+   ULTRA SMALL DEVICES
+==================================== */
+
+@media (max-width: 380px) {
+  nav h1 {
+    font-size: 1.2rem !important;
+  }
+
+  .floating-trial-btn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
