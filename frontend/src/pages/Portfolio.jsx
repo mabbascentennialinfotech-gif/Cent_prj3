@@ -18,34 +18,16 @@ import {
   FaCog,
   FaPaintBrush,
 } from "react-icons/fa";
-import {
-  User,
-  Briefcase,
-  Link,
-  ShieldCheck,
-  Sparkles,
-  Globe,
-  FileText,
-  Rocket,
-  Smartphone,
-  LayoutDashboard,
-  Star,
-  Menu,
-  X,
-} from "lucide-react";
-import githubLogo from "../assets/github.png";
-import linkedinLogo from "../assets/linkedin.png";
+import { Menu, X } from "lucide-react";
 
 export default function Trial() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isPremium, setIsPremium] = useState(false);
-
   const [currentUser, setCurrentUser] = useState(null);
-
   const [username, setUsername] = useState("");
-
   const navigate = useNavigate();
+  const [editMode, setEditMode] = useState(false);
 
   const iconMap = {
     code: <FaCode />,
@@ -55,87 +37,25 @@ export default function Trial() {
   };
   const getIcon = (key) => iconMap[key] || <FaCode />;
 
-  const [editMode, setEditMode] = useState(false);
-
   const [headerSection, setHeaderSection] = useState({
     logo: "Portfolio",
     logoImage: "",
   });
 
-  const handleLogoUpload = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setHeaderSection({
-        ...headerSection,
-        logoImage: reader.result,
-      });
-    };
-
-    reader.readAsDataURL(file);
-  };
-  const removeLogo = () => {
-    setHeaderSection({
-      ...headerSection,
-      logoImage: "",
-    });
-  };
-  /*********Home section : Start ******* */
   const [heroSection, setHeroSection] = useState({
     greeting: "Hi, I'm",
     firstName: "Ashwani",
     lastName: "Kumar Chauhan",
     role: "MERN Stack Developer",
     description: "Passionate about creating responsive applications.",
-    github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
+    githubUsername: "yourusername",
+    linkedinUsername: "yourusername",
     showGithub: true,
     showLinkedin: true,
     image: "/profile.png",
     cv: "",
   });
-  /*************Image upload ************* */
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
 
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setHeroSection({
-        ...heroSection,
-        image: reader.result,
-      });
-    };
-
-    reader.readAsDataURL(file);
-  };
-
-  /*************Cv upload ****** */
-  const handleCVUpload = (e) => {
-    const file = e.target.files[0];
-
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setHeroSection({
-        ...heroSection,
-        cv: reader.result,
-      });
-    };
-
-    reader.readAsDataURL(file);
-  };
-
-  /*********Home section : end ******* */
-
-  /*********About section : Start ******* */
   const [aboutSection, setAboutSection] = useState({
     title: "About Me",
     cards: [
@@ -145,21 +65,18 @@ export default function Trial() {
         title: "Web Development",
         description: "Passionate about creating responsive applications.",
       },
-
       {
         id: 2,
         icon: "learn",
         title: "Continuous Learning",
         description: "Always eager to learn new technologies.",
       },
-
       {
         id: 3,
         icon: "cog",
         title: "Problem Solving",
         description: "Enjoy tackling complex challenges.",
       },
-
       {
         id: 4,
         icon: "hobby",
@@ -169,56 +86,21 @@ export default function Trial() {
     ],
   });
 
-  /*********About section : End ******* */
-  /*********skill  section : Start ******* */
-
   const [skillsSection, setSkillsSection] = useState({
     title: "Skills & Technologies",
     leftTitle: "Technical Proficiency",
     rightTitle: "Technologies I Work With",
     skills: [
-      {
-        id: 1,
-        name: "AI",
-        percentage: 85,
-      },
-
-      {
-        id: 2,
-        name: "ABC",
-        percentage: 80,
-      },
-
-      {
-        id: 3,
-        name: "MERN Stack",
-        percentage: 90,
-      },
-
-      {
-        id: 4,
-        name: "Generative AI",
-        percentage: 70,
-      },
-
-      {
-        id: 5,
-        name: "HTML",
-        percentage: 90,
-      },
-
-      {
-        id: 6,
-        name: "CSS",
-        percentage: 79,
-      },
+      { id: 1, name: "AI", percentage: 85 },
+      { id: 2, name: "ABC", percentage: 80 },
+      { id: 3, name: "MERN Stack", percentage: 90 },
+      { id: 4, name: "Generative AI", percentage: 70 },
+      { id: 5, name: "HTML", percentage: 90 },
+      { id: 6, name: "CSS", percentage: 79 },
     ],
-
     technologies: ["AI", "ABC", "MERN Stack", "Generative AI", "HTML", "CSS"],
   });
 
-  /********* skill  section : End    ******* */
-  /*********project section : Start ******* */
   const [projectsSection, setProjectsSection] = useState({
     title: "Recent Projects",
     githubText: "WANT TO SEE MORE OF MY WORK?",
@@ -226,42 +108,27 @@ export default function Trial() {
     projects: [
       {
         id: 1,
-
         title: "Sales Funnel Optimization",
-
         description:
-          "Improved a company’s sales funnel to increase conversions.",
-
+          "Improved a company's sales funnel to increase conversions.",
         tag: "Funnel steps (lead → call → close)",
-
         code: "#",
-
         demo: "#",
-
-        hasDemo: true,
         showCode: true,
         showDemo: true,
       },
-
       {
         id: 2,
-
         title: "CRM Management Project",
-
         description: "Managed leads using tools like HubSpot or Salesforce.",
-
         tag: "Lead tracking system",
-
         code: "#",
-
         demo: "#",
         showCode: true,
         showDemo: true,
       },
     ],
   });
-  /********* project section : End ******* */
-  /*********Contact section : Start ******* */
 
   const [contactSection, setContactSection] = useState({
     title: "Get In Touch",
@@ -274,30 +141,56 @@ export default function Trial() {
     opportunityDescription:
       "I'm actively looking for entry-level MERN Stack Developer roles and internship opportunities. If you have an exciting project or role, feel free to connect with me!",
   });
-  /*********Contact section : end ******* */
-  /*********footer section : start ******* */
+
   const [footerSection, setFooterSection] = useState({
     name: "ashwani",
-
     description: "Building digital experiences with precision and passion.",
-
-    github: "https://github.com/",
-
-    linkedin: "https://linkedin.com/",
-
+    githubUsername: "yourusername",
+    linkedinUsername: "yourusername",
     email: "yourmail@gmail.com",
-
     showGithub: true,
     showLinkedin: true,
     showEmail: true,
-
     copyright: "© 2026 Ashwani kumar chauhan. All rights reserved.",
-
     location: "Lucknow, Uttar Pradesh, India",
   });
 
-  /*********footer section : end ******* */
+  // Image upload handlers
+  const handleLogoUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setHeaderSection({ ...headerSection, logoImage: reader.result });
+    };
+    reader.readAsDataURL(file);
+  };
 
+  const removeLogo = () => {
+    setHeaderSection({ ...headerSection, logoImage: "" });
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setHeroSection({ ...heroSection, image: reader.result });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleCVUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setHeroSection({ ...heroSection, cv: reader.result });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  // Firebase Auth & Data
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
@@ -307,29 +200,18 @@ export default function Trial() {
       }
 
       try {
-        // wait for auth token
         await user.getIdToken();
-
         setCurrentUser(user);
-
         setUsername(user.displayName || user.email.split("@")[0]);
 
         const portfolioRef = doc(db, "trialData", user.uid);
-        console.log("USER:", user);
-        console.log("UID:", user.uid);
-        console.log("AUTH UID:", auth.currentUser?.uid);
-
         const portfolioSnap = await getDoc(portfolioRef);
 
         const userRef = doc(db, "users", user.uid);
-
         const userSnap = await getDoc(userRef);
 
         if (userSnap.exists()) {
           const userData = userSnap.data();
-
-          console.log("USER DATA:", userData);
-
           setIsPremium(userData?.premium === true);
         }
 
@@ -337,12 +219,45 @@ export default function Trial() {
           const data = portfolioSnap.data();
 
           if (data.headerSection) setHeaderSection(data.headerSection);
-          if (data.heroSection) setHeroSection(data.heroSection);
+
+          if (data.heroSection) {
+            // ✅ FIX: Ensure booleans are preserved
+            setHeroSection({
+              ...data.heroSection,
+              showGithub:
+                data.heroSection.showGithub !== undefined
+                  ? data.heroSection.showGithub
+                  : true,
+              showLinkedin:
+                data.heroSection.showLinkedin !== undefined
+                  ? data.heroSection.showLinkedin
+                  : true,
+            });
+          }
+
           if (data.aboutSection) setAboutSection(data.aboutSection);
           if (data.skillsSection) setSkillsSection(data.skillsSection);
           if (data.projectsSection) setProjectsSection(data.projectsSection);
           if (data.contactSection) setContactSection(data.contactSection);
-          if (data.footerSection) setFooterSection(data.footerSection);
+
+          if (data.footerSection) {
+            // ✅ FIX: Ensure booleans are preserved
+            setFooterSection({
+              ...data.footerSection,
+              showGithub:
+                data.footerSection.showGithub !== undefined
+                  ? data.footerSection.showGithub
+                  : true,
+              showLinkedin:
+                data.footerSection.showLinkedin !== undefined
+                  ? data.footerSection.showLinkedin
+                  : true,
+              showEmail:
+                data.footerSection.showEmail !== undefined
+                  ? data.footerSection.showEmail
+                  : true,
+            });
+          }
         }
       } catch (error) {
         console.error("Firestore Error:", error);
@@ -352,30 +267,47 @@ export default function Trial() {
     return () => unsubscribe();
   }, []);
 
+  // ✅ FIXED Save function
   const savePortfolio = async () => {
     if (!currentUser) return;
 
     try {
+      // Debug: Check what we're saving
+      console.log("Saving heroSection:", heroSection);
+      console.log("showGithub:", heroSection.showGithub);
+      console.log("showLinkedin:", heroSection.showLinkedin);
+
       await setDoc(doc(db, "trialData", currentUser.uid), {
         headerSection,
-        heroSection,
+        heroSection: {
+          ...heroSection,
+          // Ensure booleans are explicitly saved
+          showGithub: heroSection.showGithub === true,
+          showLinkedin: heroSection.showLinkedin === true,
+        },
         aboutSection,
         skillsSection,
         projectsSection,
         contactSection,
-        footerSection,
+        footerSection: {
+          ...footerSection,
+          showGithub: footerSection.showGithub === true,
+          showLinkedin: footerSection.showLinkedin === true,
+          showEmail: footerSection.showEmail === true,
+        },
         updatedAt: Date.now(),
       });
 
-      console.log("Portfolio Saved");
+      console.log("Portfolio Saved Successfully!");
+      alert("Portfolio saved successfully! ✅");
     } catch (error) {
       console.error("Error saving portfolio:", error);
+      alert("Error saving portfolio: " + error.message);
     }
   };
 
   const logout = async () => {
     await signOut(auth);
-
     window.location.href = "/login?type=register";
   };
 
@@ -390,16 +322,11 @@ export default function Trial() {
               <input
                 value={headerSection.logo}
                 onChange={(e) =>
-                  setHeaderSection({
-                    ...headerSection,
-                    logo: e.target.value,
-                  })
+                  setHeaderSection({ ...headerSection, logo: e.target.value })
                 }
                 placeholder="Enter Logo Name"
               />
-
               <input type="file" accept="image/*" onChange={handleLogoUpload} />
-
               {headerSection.logoImage && (
                 <button className="remove-btn" onClick={removeLogo}>
                   Remove
@@ -415,30 +342,25 @@ export default function Trial() {
                   className="logo-img"
                 />
               )}
-
               <span className="logo-display">{headerSection.logo}</span>
             </>
           )}
         </div>
 
-        {/* Desktop Navigation */}
         <nav className={`navbar ${mobileMenu ? "mobile-open" : ""}`}>
           <a href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
-
           <div className="mobile-user-info">
             <span>{username}</span>
-
             <button onClick={logout} className="customize-btn">
               Signout
             </button>
           </div>
         </nav>
 
-        {/* Always Visible Actions */}
         <div className="header-actions">
           <button
             className="customize-btn"
@@ -478,47 +400,31 @@ export default function Trial() {
               <input
                 value={heroSection.greeting}
                 onChange={(e) =>
-                  setHeroSection({
-                    ...heroSection,
-                    greeting: e.target.value,
-                  })
+                  setHeroSection({ ...heroSection, greeting: e.target.value })
                 }
                 placeholder="Enter Greeting"
               />
-
               <input
                 value={heroSection.firstName}
                 onChange={(e) =>
-                  setHeroSection({
-                    ...heroSection,
-                    firstName: e.target.value,
-                  })
+                  setHeroSection({ ...heroSection, firstName: e.target.value })
                 }
                 placeholder="Enter First Name"
               />
-
               <input
                 value={heroSection.lastName}
                 onChange={(e) =>
-                  setHeroSection({
-                    ...heroSection,
-                    lastName: e.target.value,
-                  })
+                  setHeroSection({ ...heroSection, lastName: e.target.value })
                 }
                 placeholder="Enter Last Name"
               />
-
               <input
                 value={heroSection.role}
                 onChange={(e) =>
-                  setHeroSection({
-                    ...heroSection,
-                    role: e.target.value,
-                  })
+                  setHeroSection({ ...heroSection, role: e.target.value })
                 }
                 placeholder="Enter Role"
               />
-
               <textarea
                 value={heroSection.description}
                 onChange={(e) =>
@@ -530,31 +436,59 @@ export default function Trial() {
                 placeholder="Enter Your Professional Tagline"
               />
 
-              <input
-                value={heroSection.github}
-                onChange={(e) =>
-                  setHeroSection({
-                    ...heroSection,
-                    github: e.target.value,
-                  })
-                }
-                placeholder="Enter GitHub URL"
-              />
+              {/* GitHub Username Input */}
+              <div className="url-input-group">
+                <label className="input-label">
+                  <FaGithub /> GitHub Username
+                </label>
+                <div className="url-input-wrapper">
+                  <span className="url-prefix">https://github.com/</span>
+                  <input
+                    className="url-username-input"
+                    value={heroSection.githubUsername}
+                    onChange={(e) =>
+                      setHeroSection({
+                        ...heroSection,
+                        githubUsername: e.target.value,
+                      })
+                    }
+                    placeholder="yourusername"
+                  />
+                </div>
+                <small className="input-hint">
+                  💡 Only enter your username (e.g., ashwanikumar)
+                </small>
+              </div>
 
-              <input
-                value={heroSection.linkedin}
-                onChange={(e) =>
-                  setHeroSection({
-                    ...heroSection,
-                    linkedin: e.target.value,
-                  })
-                }
-                placeholder="Enter LinkedIn URL"
-              />
+              {/* LinkedIn Username Input */}
+              <div className="url-input-group">
+                <label className="input-label">
+                  <FaLinkedin /> LinkedIn Username
+                </label>
+                <div className="url-input-wrapper">
+                  <span className="url-prefix">https://linkedin.com/in/</span>
+                  <input
+                    className="url-username-input"
+                    value={heroSection.linkedinUsername}
+                    onChange={(e) =>
+                      setHeroSection({
+                        ...heroSection,
+                        linkedinUsername: e.target.value,
+                      })
+                    }
+                    placeholder="yourusername"
+                  />
+                </div>
+                <small className="input-hint">
+                  💡 Only enter your username (e.g., ashwanichauhan)
+                </small>
+              </div>
+
+              {/* ✅ FIX: Ensure checkboxes are saving properly */}
               <label className="toggle-row">
                 <input
                   type="checkbox"
-                  checked={heroSection.showGithub}
+                  checked={heroSection.showGithub === true}
                   onChange={(e) =>
                     setHeroSection({
                       ...heroSection,
@@ -568,7 +502,7 @@ export default function Trial() {
               <label className="toggle-row">
                 <input
                   type="checkbox"
-                  checked={heroSection.showLinkedin}
+                  checked={heroSection.showLinkedin === true}
                   onChange={(e) =>
                     setHeroSection({
                       ...heroSection,
@@ -580,7 +514,6 @@ export default function Trial() {
               </label>
 
               <label>Upload Profile Image</label>
-
               <input
                 type="file"
                 accept="image/*"
@@ -588,7 +521,6 @@ export default function Trial() {
               />
 
               <label>Upload CV</label>
-
               <input
                 type="file"
                 accept=".pdf,.doc,.docx"
@@ -602,9 +534,7 @@ export default function Trial() {
                 <br />
                 {heroSection.lastName}
               </h1>
-
               <h2>{heroSection.role}</h2>
-
               <p>{heroSection.description}</p>
             </>
           )}
@@ -615,17 +545,12 @@ export default function Trial() {
               onClick={() => {
                 if (!isPremium) {
                   alert("Upgrade to premium to download CV");
-
                   return;
                 }
-
                 if (heroSection.cv) {
                   const link = document.createElement("a");
-
                   link.href = heroSection.cv;
-
                   link.download = "resume";
-
                   link.click();
                 } else {
                   alert("No CV uploaded");
@@ -635,15 +560,24 @@ export default function Trial() {
               {isPremium ? "DOWNLOAD CV" : "PREMIUM ONLY"}
             </button>
 
+            {/* ✅ Social Icons - Now using heroSection directly */}
             <div className="social-icons">
-              {heroSection.showGithub && (
-                <a href={heroSection.github} target="_blank" rel="noreferrer">
+              {heroSection.showGithub === true && (
+                <a
+                  href={`https://github.com/${heroSection.githubUsername}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <FaGithub size={28} />
                 </a>
               )}
 
-              {heroSection.showLinkedin && (
-                <a href={heroSection.linkedin} target="_blank" rel="noreferrer">
+              {heroSection.showLinkedin === true && (
+                <a
+                  href={`https://linkedin.com/in/${heroSection.linkedinUsername}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <FaLinkedin size={28} />
                 </a>
               )}
@@ -654,7 +588,6 @@ export default function Trial() {
         <div className="hero-right">
           <div className="image-circle">
             <img src={heroSection.image} alt="profile" />
-
             {!isPremium && <div className="image-watermark">TRIAL</div>}
           </div>
         </div>
@@ -1492,29 +1425,39 @@ export default function Trial() {
           <div className="footer-icons">
             {editMode ? (
               <div className="footer-edit-links">
-                <input
-                  placeholder="GitHub Link"
-                  value={footerSection.github}
-                  onChange={(e) =>
-                    setFooterSection({
-                      ...footerSection,
-                      github: e.target.value,
-                    })
-                  }
-                  placeholder="Enter GitHub URL"
-                />
+                <div className="url-input-group">
+                  <label className="input-label">GitHub Username</label>
+                  <div className="url-input-wrapper">
+                    <span className="url-prefix">https://github.com/</span>
+                    <input
+                      value={footerSection.githubUsername}
+                      onChange={(e) =>
+                        setFooterSection({
+                          ...footerSection,
+                          githubUsername: e.target.value,
+                        })
+                      }
+                      placeholder="yourusername"
+                    />
+                  </div>
+                </div>
 
-                <input
-                  placeholder="LinkedIn Link"
-                  value={footerSection.linkedin}
-                  onChange={(e) =>
-                    setFooterSection({
-                      ...footerSection,
-                      linkedin: e.target.value,
-                    })
-                  }
-                  placeholder="Enter LinkedIn URL"
-                />
+                <div className="url-input-group">
+                  <label className="input-label">LinkedIn Username</label>
+                  <div className="url-input-wrapper">
+                    <span className="url-prefix">https://linkedin.com/in/</span>
+                    <input
+                      value={footerSection.linkedinUsername}
+                      onChange={(e) =>
+                        setFooterSection({
+                          ...footerSection,
+                          linkedinUsername: e.target.value,
+                        })
+                      }
+                      placeholder="yourusername"
+                    />
+                  </div>
+                </div>
 
                 <input
                   placeholder="Email"
@@ -1573,7 +1516,7 @@ export default function Trial() {
               <>
                 {footerSection.showGithub && (
                   <a
-                    href={footerSection.github}
+                    href={`https://github.com/${footerSection.githubUsername}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -1583,7 +1526,7 @@ export default function Trial() {
 
                 {footerSection.showLinkedin && (
                   <a
-                    href={footerSection.linkedin}
+                    href={`https://linkedin.com/in/${footerSection.linkedinUsername}`}
                     target="_blank"
                     rel="noreferrer"
                   >
