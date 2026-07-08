@@ -142,7 +142,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="hidden md:flex items-center gap-8 text-white/80">
+        <div className="hidden md:flex items-center gap-8 text-white/80 nav-links">
           <button
             onClick={() =>
               document
@@ -167,18 +167,18 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 nav-right">
           {!loading && !isPremium && (
             <button
               onClick={() => navigate("/pricing")}
-              className="bg-gradient-to-r from-yellow-500 to-orange-500 px-3 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl text-sm md:text-base font-semibold transition-all shadow-2xl"
+              className="go-premium-btn bg-gradient-to-r from-yellow-500 to-orange-500 px-3 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl text-sm md:text-base font-semibold transition-all shadow-2xl"
             >
               Go Premium
             </button>
           )}
 
           <button
-            className="md:hidden"
+            className="md:hidden hamburger-btn"
             onClick={() => setMobileMenu(!mobileMenu)}
           >
             {mobileMenu ? <X size={28} /> : <Menu size={28} />}
