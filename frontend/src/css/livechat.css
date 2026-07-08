@@ -39,7 +39,7 @@ body {
   line-height: 1.4;
 
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   z-index: 1000;
 }
@@ -221,7 +221,7 @@ body {
 .about-card:hover {
   transform: translateY(-10px);
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .icon {
@@ -252,7 +252,6 @@ body {
 /* Responsive */
 
 @media (max-width: 768px) {
-
   .about-section {
     padding: 60px 20px;
   }
@@ -413,7 +412,6 @@ body {
 /* Responsive */
 
 @media (max-width: 1000px) {
-
   .skills-container {
     flex-direction: column;
   }
@@ -433,7 +431,6 @@ body {
 }
 
 @media (max-width: 600px) {
-
   .skills-section {
     padding: 60px 20px;
   }
@@ -760,12 +757,7 @@ body {
   }
 }
 .footer {
-  background: linear-gradient(
-    90deg,
-    #020d2d 0%,
-    #03103a 50%,
-    #020a26 100%
-  );
+  background: linear-gradient(90deg, #020d2d 0%, #03103a 50%, #020a26 100%);
   padding: 90px 80px 50px;
   color: white;
   font-family: Arial, sans-serif;
@@ -905,7 +897,7 @@ html {
 }
 
 .edit-btn {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   color: white;
   cursor: pointer;
@@ -916,7 +908,7 @@ html {
 }
 
 .edit-btn:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .customize-btn {
