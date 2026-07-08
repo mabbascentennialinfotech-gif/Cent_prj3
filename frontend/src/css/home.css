@@ -227,3 +227,118 @@ button {
     padding: 8px 12px;
   }
 }
+
+/* iPhone 12 Pro (portrait) tweak: slightly smaller Go Premium button so hamburger fits */
+@media only screen and (width: 390px) and (height: 844px) and (orientation: portrait) {
+  .go-premium-btn {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* Samsung Galaxy S8+ (portrait) tweak: slightly smaller Go Premium button so hamburger fits */
+@media only screen and (width: 360px) and (height: 740px) and (orientation: portrait) {
+  .go-premium-btn {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-size: 10px !important;
+  }
+}
+
+/* iPad mini / iPad Air (portrait) navbar spacing tweak: add small gap between links and actions */
+@media only screen and (width: 768px) and (orientation: portrait) {
+  nav .nav-right {
+    margin-left: 1rem !important; /* 16px */
+  }
+}
+
+@media only screen and (width: 820px) and (orientation: portrait) {
+  nav .nav-right {
+    margin-left: 1.25rem !important; /* 20px */
+  }
+}
+
+/* Add a small left padding to nav links on iPad mini / iPad Air so "Get Started" doesn't touch logo */
+@media only screen and (width: 768px) and (orientation: portrait) {
+  nav .nav-links {
+    padding-left: 0.75rem !important; /* 12px */
+  }
+}
+
+@media only screen and (width: 820px) and (orientation: portrait) {
+  nav .nav-links {
+    padding-left: 1rem !important; /* 16px */
+  }
+}
+
+/* Galaxy Z Fold5 (folded) — narrow range: 900–1100px
+   Hide center links and shrink Go Premium so hamburger fits without affecting iPad rules */
+@media only screen and (min-width: 900px) and (max-width: 1100px) {
+  /* hide center nav links to free space */
+  nav .nav-links {
+    display: none !important;
+  }
+
+  /* shrink only the Go Premium button so the hamburger fits */
+  nav .go-premium-btn {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-size: 12px !important;
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+  }
+
+  /* force hamburger visible (override Tailwind md:hidden) */
+  nav .hamburger-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 60 !important;
+  }
+
+  /* small gap reduction to fit both */
+  nav .nav-right {
+    gap: 6px !important;
+  }
+}
+
+/* Very narrow phones / folded small view (e.g. Folded Z Fold widths ~340px)
+   Shrink Go Premium and ensure hamburger is aligned right. Only affects navbar elements. */
+@media (max-width: 420px) {
+  nav .go-premium-btn {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    min-width: 0 !important;
+  }
+
+  /* push the right container to the far right so hamburger is visible */
+  nav .nav-right {
+    margin-left: auto !important;
+    gap: 6px !important;
+  }
+
+  /* ensure hamburger is visible and sits at the right edge */
+  nav .hamburger-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-left: 6px !important;
+    z-index: 80 !important;
+  }
+
+  /* Slightly reduce logo size to avoid overlap (only on very narrow viewports) */
+  nav h1 {
+    font-size: 16px !important;
+  }
+}
