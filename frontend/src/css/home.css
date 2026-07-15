@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* ====================================
+   GLOBAL RESET
+==================================== */
+
 * {
   box-sizing: border-box;
 }
@@ -9,9 +13,15 @@ body,
 #root {
   margin: 0;
   padding: 0;
+  width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
   background: black;
   font-family: Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -21,16 +31,159 @@ body {
 #root {
   min-height: 100vh;
 }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ====================================
+   NAVBAR
+==================================== */
+
+.sticky-nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100%;
+  z-index: 1000 !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.sticky-nav nav {
+  position: relative;
+  z-index: 1001;
+}
+
+nav {
+  width: 100%;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+nav h1 {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+nav .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+nav .nav-links a {
+  white-space: nowrap;
+}
+
+nav .nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+/* ====================================
+   NAVBAR ACTIONS
+==================================== */
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.profile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.user-name {
+  display: block;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hamburger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger-btn svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* ====================================
+   MOBILE MENU PANEL
+==================================== */
+
+.mobile-menu-panel {
+  position: fixed !important;
+  top: 72px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100%;
+  z-index: 999 !important;
+}
+
+/* ====================================
+   MAIN CONTENT
+==================================== */
+
+.home-main-content {
+  padding-top: 96px !important;
+}
+
+/* ====================================
+   FLOATING TRIAL BUTTON
+==================================== */
+
 .floating-trial-btn {
   position: fixed;
-  right: 20px;
   top: 50%;
+  right: 20px;
+  z-index: 1000;
+
   transform: translateY(-50%);
+
+  padding: 14px 16px;
 
   background: #2563eb;
   color: white;
 
-  padding: 14px 16px;
   border: none;
   border-radius: 12px;
 
@@ -39,74 +192,63 @@ body {
   line-height: 1.4;
 
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 .icon {
   width: 22px;
   height: 22px;
 }
-/* ====================================
-   RESPONSIVE IMPROVEMENTS
-==================================== */
-
-/* Prevent horizontal scrolling */
-html,
-body,
-#root {
-  overflow-x: hidden;
-  width: 100%;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Responsive images */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Buttons */
-button {
-  cursor: pointer;
-}
 
 /* ====================================
-   MOBILE (0px - 640px)
+   MOBILE: 0px - 640px
 ==================================== */
 
 @media (max-width: 640px) {
-  /* General spacing */
   section {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
 
-  /* Navbar */
   nav {
+    min-height: 68px;
     padding: 1rem !important;
-    gap: 1rem;
+    gap: 8px;
   }
 
   nav h1 {
+    display: flex;
     font-size: 1.4rem !important;
+    white-space: nowrap;
+    margin-inline: -4px;
   }
 
   nav p {
     display: none;
   }
 
-  /* Hero section */
+  nav .nav-links {
+    display: none !important;
+  }
+
+  nav .nav-right {
+    margin-left: auto !important;
+    gap: 8px !important;
+  }
+
+  .hamburger-btn {
+    display: flex !important;
+  }
+
+  .mobile-menu-panel {
+    top: 68px !important;
+  }
+
   h1 {
     word-break: break-word;
   }
 
-  /* Hero buttons */
   .hero-buttons,
   .button-group {
     flex-direction: column !important;
@@ -118,26 +260,25 @@ button {
     width: 100%;
   }
 
-  /* Stats section */
   .stats-grid {
     grid-template-columns: 1fr !important;
   }
 
-  /* Cards */
   .feature-card,
   .pricing-card,
   .faq-card {
     padding: 1rem !important;
   }
 
-  /* Floating trial button */
   .floating-trial-btn {
+    top: auto;
     right: 10px;
     bottom: 20px;
-    top: auto;
+
     transform: none;
 
     padding: 10px 14px;
+
     font-size: 13px;
   }
 
@@ -145,25 +286,211 @@ button {
     width: 18px;
     height: 18px;
   }
+
+  .user-name {
+    display: none;
+  }
+
+  .profile-icon {
+    width: 34px;
+    height: 34px;
+  }
 }
 
 /* ====================================
-   TABLET (641px - 1024px)
+   SMALL MOBILE: 0px - 480px
 ==================================== */
 
-@media (max-width: 1024px) {
-  nav {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+@media (max-width: 480px) {
+  .go-premium-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    height: 36px !important;
+
+    padding: 0 10px !important;
+
+    border-radius: 8px !important;
+
+    font-size: 11px !important;
+    line-height: 1 !important;
+
+    white-space: nowrap;
   }
 
-  section {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+  .hamburger-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+/* ====================================
+   VERY NARROW MOBILE: 0px - 420px
+==================================== */
+
+@media (max-width: 420px) {
+  nav {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  nav h1 {
+    font-size: 16px !important;
+  }
+
+  nav .nav-right {
+    margin-left: auto !important;
+    gap: 6px !important;
+  }
+
+  nav .go-premium-btn {
+    min-width: 0 !important;
+
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+
+    font-size: 11px !important;
+  }
+}
+
+/* ====================================
+   ULTRA SMALL DEVICES
+==================================== */
+
+@media (max-width: 380px) {
+  nav h1 {
+    font-size: 1.2rem !important;
   }
 
   .floating-trial-btn {
-    right: 15px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .go-premium-btn {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    font-size: 10px !important;
+  }
+}
+
+/* ====================================
+   SMALL TABLETS: 641px - 767px
+==================================== */
+
+/* @media (min-width: 641px) and (max-width: 767px) {
+  nav {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    gap: 10px;
+  }
+
+  nav h1 {
+    font-size: 1.1rem !important;
+  }
+
+  nav.logged-out .nav-links {
+    gap: 10px;
+  }
+
+  nav.logged-out .nav-links a {
+    font-size: 11px;
+  }
+
+  nav.logged-out .go-premium-btn {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 11px !important;
+  }
+
+  nav.logged-in .user-name {
+    display: none;
+  }
+} */
+
+@media (min-width: 821px) and (max-width: 899px) {
+  nav.logged-in .nav-links {
+    display: none !important;
+  }
+
+  nav.logged-in .hamburger-btn {
+    display: flex !important;
+  }
+
+  nav.logged-in .nav-right {
+    margin-left: auto !important;
+  }
+
+  nav.logged-out .nav-links {
+    display: flex !important;
+  }
+
+  nav.logged-out .hamburger-btn {
+    display: none !important;
+  }
+}
+
+/* ====================================
+   SURFACE PRO 7: 900px - 1024px
+==================================== */
+
+@media (min-width: 900px) and (max-width: 1024px) {
+  nav.logged-out .nav-links {
+    display: flex !important;
+    gap: 18px;
+  }
+
+  nav.logged-out .nav-links a {
+    font-size: 13px;
+  }
+
+  nav.logged-out .hamburger-btn {
+    display: none !important;
+  }
+
+  nav.logged-in .nav-links {
+    display: none !important;
+  }
+
+  nav.logged-in .hamburger-btn {
+    display: flex !important;
+  }
+
+  nav.logged-in .nav-right {
+    margin-left: auto !important;
+    gap: 12px !important;
+  }
+
+  nav.logged-in .user-name {
+    display: block;
+    max-width: 110px;
+  }
+}
+
+/* ====================================
+   DESKTOP: ABOVE 1024px
+==================================== */
+
+@media (min-width: 1025px) {
+  nav .nav-links {
+    display: flex !important;
+  }
+
+  nav .hamburger-btn {
+    display: none !important;
+  }
+
+  nav .nav-right {
+    margin-left: 0;
+  }
+
+  nav.logged-in .user-profile {
+    display: flex;
+  }
+
+  nav.logged-out .user-profile {
+    display: none !important;
   }
 }
 
@@ -179,6 +506,34 @@ button {
   section {
     max-width: 1600px;
     margin: 0 auto;
+  }
+}
+
+/* ====================================
+   iPHONE 12 PRO
+==================================== */
+
+@media only screen and (width: 390px) and (height: 844px) and (orientation: portrait) {
+  .go-premium-btn {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* ====================================
+   SAMSUNG GALAXY S8+
+==================================== */
+
+@media only screen and (width: 360px) and (height: 740px) and (orientation: portrait) {
+  .go-premium-btn {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-size: 10px !important;
   }
 }
 
@@ -204,7 +559,7 @@ button {
 }
 
 /* ====================================
-   BETTER TOUCH EXPERIENCE
+   TOUCH DEVICES
 ==================================== */
 
 @media (hover: none) {
@@ -219,7 +574,7 @@ button {
 
 @media (max-width: 380px) {
   nav h1 {
-    font-size: 1.2rem !important;
+    font-size: 15px !important;
   }
 
   .floating-trial-btn {
@@ -229,15 +584,6 @@ button {
 }
 
 /* iPhone 12 Pro (portrait) tweak: slightly smaller Go Premium button so hamburger fits */
-@media only screen and (width: 390px) and (height: 844px) and (orientation: portrait) {
-  .go-premium-btn {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
-    font-size: 13px !important;
-  }
-}
 
 /* Samsung Galaxy S8+ (portrait) tweak: slightly smaller Go Premium button so hamburger fits */
 @media only screen and (width: 360px) and (height: 740px) and (orientation: portrait) {
@@ -249,96 +595,353 @@ button {
     font-size: 10px !important;
   }
 }
+/* Galaxy Z Fold (folded: ~344px) */
 
-/* iPad mini / iPad Air (portrait) navbar spacing tweak: add small gap between links and actions */
-@media only screen and (width: 768px) and (orientation: portrait) {
-  nav .nav-right {
-    margin-left: 1rem !important; /* 16px */
-  }
-}
-
-@media only screen and (width: 820px) and (orientation: portrait) {
-  nav .nav-right {
-    margin-left: 1.25rem !important; /* 20px */
-  }
-}
-
-/* Add a small left padding to nav links on iPad mini / iPad Air so "Get Started" doesn't touch logo */
-@media only screen and (width: 768px) and (orientation: portrait) {
-  nav .nav-links {
-    padding-left: 0.75rem !important; /* 12px */
-  }
-}
-
-@media only screen and (width: 820px) and (orientation: portrait) {
-  nav .nav-links {
-    padding-left: 1rem !important; /* 16px */
-  }
-}
-
-/* Galaxy Z Fold5 (folded) — narrow range: 900–1100px
-   Hide center links and shrink Go Premium so hamburger fits without affecting iPad rules */
-@media only screen and (min-width: 900px) and (max-width: 1100px) {
-  /* hide center nav links to free space */
-  nav .nav-links {
-    display: none !important;
-  }
-
-  /* shrink only the Go Premium button so the hamburger fits */
-  nav .go-premium-btn {
-    padding-left: 6px !important;
-    padding-right: 6px !important;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
-    font-size: 12px !important;
-    flex-shrink: 1 !important;
-    min-width: 0 !important;
-  }
-
-  /* force hamburger visible (override Tailwind md:hidden) */
-  nav .hamburger-btn {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    z-index: 60 !important;
-  }
-
-  /* small gap reduction to fit both */
-  nav .nav-right {
-    gap: 6px !important;
-  }
-}
-
-/* Very narrow phones / folded small view (e.g. Folded Z Fold widths ~340px)
-   Shrink Go Premium and ensure hamburger is aligned right. Only affects navbar elements. */
-@media (max-width: 420px) {
+@media only screen and (width: 344px) and (height: 882px) {
   nav .go-premium-btn {
     padding-left: 6px !important;
     padding-right: 6px !important;
     padding-top: 4px !important;
-    padding-bottom: 4px !important;
+    padding-bottom: 2px !important;
     font-size: 12px !important;
     line-height: 1 !important;
     min-width: 0 !important;
   }
 
-  /* push the right container to the far right so hamburger is visible */
   nav .nav-right {
     margin-left: auto !important;
-    gap: 6px !important;
+    gap: 1px !important;
+    /* background: crimson; */
+    padding-right: 13px;
   }
 
-  /* ensure hamburger is visible and sits at the right edge */
-  nav .hamburger-btn {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    margin-left: 6px !important;
-    z-index: 80 !important;
-  }
-
-  /* Slightly reduce logo size to avoid overlap (only on very narrow viewports) */
   nav h1 {
+    font-size: 14px !important;
+  }
+}
+
+.sticky-nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.sticky-nav nav {
+  position: relative;
+  z-index: 1001;
+}
+
+.mobile-menu-panel {
+  position: fixed !important;
+  top: 72px !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 999 !important;
+}
+
+.home-main-content {
+  padding-top: 96px !important;
+}
+
+/* Make Go Premium button same height as hamburger on all mobile */
+@media (max-width: 480px) {
+  .go-premium-btn {
+    height: 36px !important;
+    padding: 0 10px !important;
+    font-size: 11px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+  }
+
+  nav .nav-right > .go-premium-btn {
+    display: none !important;
+  }
+
+  .hamburger-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+/* ipad mini applied by me */
+
+@media (width: 768px) and (orientation: portrait) {
+  /* NAVBAR CONTAINER */
+  .sticky-nav nav {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    gap: 8px !important;
+    min-height: 60px !important;
+  }
+
+  /* LOGO */
+  .sticky-nav nav > div:first-child h1 {
+    font-size: 14px !important;
+  }
+
+  .sticky-nav nav > div:first-child p {
+    display: none !important;
+  }
+
+  /* NAV LINKS */
+  .sticky-nav nav .nav-links {
+    gap: 10px !important;
+  }
+
+  .sticky-nav nav .nav-links button,
+  .sticky-nav nav .nav-links a {
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+  }
+
+  .sticky-nav nav .go-premium-btn {
+    display: block !important;
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+  }
+
+  /* PROFILE ICON */
+  .sticky-nav nav .profile-icon {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 10px !important;
+  }
+
+  /* USER NAME */
+  .sticky-nav nav .user-name {
+    font-size: 11px !important;
+    max-width: 60px !important;
+  }
+
+  /* HAMBURGER - HIDE */
+  .sticky-nav nav .hamburger-btn {
+    display: none !important;
+  }
+
+  /* MOBILE MENU PANEL - HIDE */
+  .sticky-nav .md\:hidden {
+    display: none !important;
+  }
+}
+
+/* Applied by me for only ipad Air*/
+
+@media (width: 820px) and (orientation: portrait) {
+  /* NAVBAR CONTAINER */
+  .sticky-nav nav {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    gap: 10px !important;
+    min-height: 64px !important;
+  }
+
+  /* LOGO */
+  .sticky-nav nav > div:first-child h1 {
     font-size: 16px !important;
+  }
+
+  .sticky-nav nav > div:first-child p {
+    display: none !important;
+  }
+
+  /* NAV LINKS */
+  .sticky-nav nav .nav-links {
+    gap: 14px !important;
+  }
+
+  .sticky-nav nav .nav-links button,
+  .sticky-nav nav .nav-links a {
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* GO PREMIUM BUTTON */
+  .sticky-nav nav .go-premium-btn {
+    display: block !important;
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+  }
+
+  /* PROFILE ICON */
+  .sticky-nav nav .profile-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 12px !important;
+  }
+
+  /* USER NAME */
+  .sticky-nav nav .user-name {
+    font-size: 13px !important;
+    max-width: 80px !important;
+  }
+
+  /* HAMBURGER - HIDE */
+  .sticky-nav nav .hamburger-btn {
+    display: none !important;
+  }
+
+  /* MOBILE MENU PANEL - HIDE */
+  .sticky-nav .md\:hidden {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   iPAD PRO 12.9" ONLY - NAVBAR (1024px portrait)
+   ============================================ */
+
+@media (width: 1024px) and (orientation: portrait) {
+  /* NAVBAR CONTAINER */
+  .sticky-nav nav {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    gap: 16px !important;
+    min-height: 72px !important;
+  }
+
+  /* LOGO */
+  .sticky-nav nav > div:first-child h1 {
+    font-size: 20px !important;
+  }
+
+  .sticky-nav nav > div:first-child p {
+    display: block !important;
+    font-size: 11px !important;
+  }
+
+  /* NAV LINKS */
+  .sticky-nav nav .nav-links {
+    gap: 15px !important;
+  }
+
+  .sticky-nav nav .nav-links button,
+  .sticky-nav nav .nav-links a {
+    font-size: 15px !important;
+    padding: 4px 10px !important;
+  }
+
+  /* GO PREMIUM BUTTON */
+  .sticky-nav nav .go-premium-btn {
+    display: block !important;
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+    border-radius: 12px !important;
+  }
+
+  /* PROFILE ICON */
+  .sticky-nav nav .profile-icon {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 14px !important;
+  }
+
+  /* USER NAME */
+  .sticky-nav nav .user-name {
+    font-size: 15px !important;
+    max-width: 110px !important;
+  }
+
+  /* HAMBURGER - HIDE */
+  .sticky-nav nav .hamburger-btn {
+    display: none !important;
+  }
+
+  /* MOBILE MENU PANEL - HIDE */
+  .sticky-nav .md\:hidden {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   SURFACE PRO 7 ONLY - NAVBAR
+   ============================================ */
+
+/* Surface Pro 7 Portrait (912px) */
+@media (width: 912px) and (orientation: portrait) {
+  /* NAVBAR CONTAINER */
+  .sticky-nav nav {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+    gap: 14px !important;
+    min-height: 70px !important;
+  }
+
+  /* LOGO */
+  .sticky-nav nav > div:first-child h1 {
+    font-size: 18px !important;
+  }
+
+  .sticky-nav nav > div:first-child p {
+    display: block !important;
+    font-size: 9px !important;
+  }
+
+  /* NAV LINKS */
+  .sticky-nav nav .nav-links {
+    gap: 10px !important;
+  }
+
+  .sticky-nav nav .nav-links button,
+  .sticky-nav nav .nav-links a {
+    font-size: 14px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* GO PREMIUM BUTTON */
+  .sticky-nav nav .go-premium-btn {
+    display: block !important;
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+    border-radius: 10px !important;
+  }
+
+  /* PROFILE ICON */
+  .sticky-nav nav .profile-icon {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 13px !important;
+  }
+
+  /* USER NAME */
+  .sticky-nav nav .user-name {
+    font-size: 14px !important;
+    max-width: 90px !important;
+  }
+
+  /* HAMBURGER - HIDE */
+  .sticky-nav nav .hamburger-btn {
+    display: none !important;
+  }
+
+  /* MOBILE MENU PANEL - HIDE */
+  .sticky-nav .md\:hidden {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   NEST HUB ONLY (1024 × 600)
+   ============================================ */
+
+@media only screen and (width: 1024px) and (height: 600px) {
+  /* Your Nest Hub specific styles here */
+  /* This will ONLY apply to Nest Hub and no other device */
+
+  /* Example: Navbar adjustments */
+  .sticky-nav nav {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    min-height: 60px !important;
+  }
+
+  .sticky-nav nav .nav-links {
+    gap: 12px !important;
   }
 }
